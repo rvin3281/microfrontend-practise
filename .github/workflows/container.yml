@@ -6,7 +6,8 @@ name: deploy-container
 # wathc push event only on masters
 on:
   push:
-    branches: -master
+    branches: 
+    - master
     # Only run this workflow whenever make a change inside the container.
     paths:
       - "packages/container/**"
