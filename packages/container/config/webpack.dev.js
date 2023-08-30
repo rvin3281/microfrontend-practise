@@ -3,9 +3,6 @@
  * that we just wrote out inside that common file and merge it together
  * with a configuration that we're about to write inside this development file. */
 const { merge } = require("webpack-merge");
-// this is what is going to take some kind of HTML file inside of our project
-//and inject a couple of different script tags inside of it.
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 
@@ -34,9 +31,6 @@ const devConfig = {
       },
       // Add shared
       shared: packageJson.dependencies,
-    }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
     }),
   ],
 };
