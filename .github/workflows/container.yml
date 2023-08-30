@@ -1,0 +1,34 @@
+# provide a name for this workflow
+name: deploy-container
+
+# This will designate when we want to run this workflow. essentially, what events are we watching for?
+# Watch for push event
+# wathc push event only on masters
+on:
+  push:
+    branches: -master
+    # Only run this workflow whenever make a change inside the container.
+    paths:
+      - "packages/container/**"
+
+#this is essentially going to set our kind of execution environment to inside of our container directory.
+defaults:
+  run:
+    working-directory: packages/container
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm run build
+
+      - uses: shinyinc/action-aws-cli@v1.2
+
+      #sync the contents of that directory with an S3 bucket or essentially a place where we can store files on AWS.
+      - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+        env:
+          AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
