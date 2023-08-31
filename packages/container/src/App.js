@@ -4,7 +4,7 @@ import MarketingApp from "./components/MarketingApp";
 export default () => {
   return (
     <div>
-      <h1>Added auto invalidate</h1>
+      <h1>Im in new GIT BRANCH</h1>
       <hr />
       <MarketingApp />
     </div>
