@@ -4,7 +4,7 @@ import MarketingApp from "./components/MarketingApp";
 export default () => {
   return (
     <div>
-      <h1>Connected to AWS</h1>
+      <h1>Added auto invalidate</h1>
       <hr />
       <MarketingApp />
     </div>
