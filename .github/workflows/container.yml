@@ -6,8 +6,8 @@ name: deploy-container
 # wathc push event only on masters
 on:
   push:
-    branches: 
-    - master
+    branches:
+      - master
     # Only run this workflow whenever make a change inside the container.
     paths:
       - "packages/container/**"
@@ -33,3 +33,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ap-southeast-1
