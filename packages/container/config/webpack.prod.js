@@ -22,7 +22,8 @@ const prodConfig = {
       name: "container",
       remotes: {
         // key needs to match with the first part of import statement inside the container object
-        marketing: `marketing@${domain}/marketing/remoteEntry.js`,
+        // In production we need to get the remoteEntry.js file from the /marketing/latest file
+        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
