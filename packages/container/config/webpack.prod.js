@@ -15,6 +15,7 @@ const prodConfig = {
      * files for production, all the different files that are
      * built are gonna use this as a template to figure out how to name. we do this for caching issue */
     filename: "[name].[contenthash].js",
+    publicPath: "/container/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
